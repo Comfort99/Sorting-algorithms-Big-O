@@ -6,4 +6,57 @@
   *
   *
   */
+void swap(int *p, int *p1);
+void quicksort_recursive(int a[], int first, int last, int length);
+int partition(int a[], int first, int last, int length);
 
+void quick_sort(int *array, size_t size)
+{
+	int length = size - 1;
+
+	quicksort_recursive(array, 0, size - 1, length);
+}
+
+void swap(int *p, int *p1)
+{
+	int temp = *p;
+	*p = *p1;
+	*p1 = temp;
+}
+
+void quicksort_recursive(int a[], int first, int last, int length)
+{
+
+	if (first < last)
+	{
+	int i_p = partition(a, first, last, length); /*This is the pivot index*/
+	quicksort_recursive(a, first, i_p - 1, length);
+	quicksort_recursive(a, i_p + 1, last, length);
+	}
+}
+
+int partition(int a[], int first, int last, int length)
+{
+	int i_pv = a[last];
+	int i = first;/*i_pv is the value at the pivot index*/
+	int j;
+	int k = 0;
+
+	for (j = first; j < last; j++)
+	{
+		if ( a[j] <= i_pv)
+		{
+			swap(&a[i], &a[j]);
+			i++;
+		  while (k <= length)
+		{
+			/*printf("%d, ", a[k]);*/
+			k++;
+		}
+		}	
+		/*printf("\n");*/
+		}
+	
+	swap(&a[i], &a[last]);
+	return (i);
+}
