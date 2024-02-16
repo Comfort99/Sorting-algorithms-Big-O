@@ -1,1 +1,3 @@
-0(1)
+Best: (nlog(n))
+Average: 0(nlog(n))
+Worst: 0(n^2)
