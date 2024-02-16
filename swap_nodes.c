@@ -5,7 +5,7 @@
   *
   *
   */
-void swap(listint_t *y, listint_t *z)
+void swap_(listint_t *y, listint_t *z)
 {
 	listint_t *i = y;
 	listint_t *t = z;
@@ -46,13 +46,15 @@ void swap(listint_t *y, listint_t *z)
                                         //printf("This is i2 : %d\n", i->n);
 				t = i->next;
 				printf("NOW i: %d\n", i->n);
+				y = i;
+				z = t;
 				if (t != NULL)
 				{
-					printf("NOW i->next : %d\n", i->next->n);
-					printf("CONFIRM t = i->next : %d\n", t->n);
+//					printf("NOW i->next : %d\n", i->next->n);
+//					printf("CONFIRM t = i->next : %d\n", t->n);
 				}
-				else if (t == NULL)
-					printf("t is NULL\n");
+				// else if (t == NULL)
+//					printf("t  //i->next is NULL\n");
 		}
 		printf("LEAVE\n");
 }
