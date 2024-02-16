@@ -9,7 +9,7 @@ void insertion_sort_list(listint_t **list)
 {
  	listint_t *t = *list;
 	listint_t *i;
-
+	listint_t *j;
 	t = t->next;
 	/* t is at 48*/
 	/**
@@ -26,7 +26,8 @@ void insertion_sort_list(listint_t **list)
 		while(i != NULL && (i->n > t->n))
 		{
 			i = t->prev;
-			printf("This is i: %d\n", i->n);
+			printf("This is i1: %d\n", i->n);
+			printf("This is t: %d\n", t->n);
 			i->next = t->next;
 			if (t->next != NULL)
 			{
@@ -52,9 +53,16 @@ void insertion_sort_list(listint_t **list)
 				printf("This is t->next: %d\n", t->next->n);
 				i = t->prev;
 				if (i != NULL)
-					printf("This is i : %d\n", i->n);
+					printf("This is i2 : %d\n", i->n);
 		}
+		
 		t = t->next;
 	}
-	
+	j = *list;
+	while (j != NULL)
+	{
+		printf("%d  ", j->n);
+		j = j->prev;
+		*list = j;
+	}
 }
