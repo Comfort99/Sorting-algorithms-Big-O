@@ -32,7 +32,8 @@ void merge_sort(int *array, size_t size)
 
 //	a[2] = 88822;	
 //	print_array1(a, size);
-
+	printf("\nDUSTED\n");
+	free(b);
 }
 
 void merge_split(int *a, int lb, int hb, int *b)
