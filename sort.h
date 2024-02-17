@@ -31,5 +31,7 @@ void shell_sort(int *array, size_t size);
 /*help functions*/
 void update_list(listint_t **list);
 void print_list1(listint_t *list);
+void merge_sort(int *array, size_t size);
 void swap(int *a, int *b);
+void print_array1(int *array, int lb, int size);
 #endif /*sort*/
