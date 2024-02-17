@@ -34,8 +34,10 @@ void heap_sort(int *array, size_t size);
 /*help functions*/
 void update_list(listint_t **list);
 void print_list1(listint_t *list);
+void merge_sort(int *array, size_t size);
 void swap(int *a, int *b);
 int get_max(int *array, int size);
 void max_heapify(int arr[], size_t n, size_t i);
+void print_array1(int *array, int lb, int size);
 
 #endif /*sort*/
