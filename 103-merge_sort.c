@@ -44,7 +44,7 @@ void merge_split(int *a, int lb, int hb, int *b)
 	//printf("b[1] is : %d\n", b[1]);
 	//printf("length is : %d\n", length);
 	//size = (hb + 1) - lb;// T BEG size = size of array
-	print_array1(a, lb, hb + 1);
+	print_array1(a, lb, hb);
 	if (lb < hb)
 	{
 		mid = (lb  + (hb - 1))/ 2;
@@ -54,6 +54,7 @@ void merge_split(int *a, int lb, int hb, int *b)
 		///print_array1(a, size);
 		merge_split(a, mid + 1, hb, b);
 		merge_actual(a, lb, mid, hb, b);
+	///	merge_split(a, mid + 1, hb);
 		//print_array1(a, size);
 	}
 	 printf("LEFT SPLIT FUNCTION\n");
