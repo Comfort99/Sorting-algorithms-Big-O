@@ -13,7 +13,7 @@ void print_array1(int *array, int lb, int size)
 	int i;
 
     i = lb;
-    printf("PRINTING ====\n");
+//@    printf("PRINTING ====\n");
     while (array && i < size)
     {
         if (i > lb)
@@ -22,5 +22,5 @@ void print_array1(int *array, int lb, int size)
         ++i;
     }
     printf("\n");
-	printf("DONE PRINTING ===\n");
+//@	printf("DONE PRINTING ===\n");
 }
