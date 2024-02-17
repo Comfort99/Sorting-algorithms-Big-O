@@ -29,5 +29,7 @@ void swap_(listint_t *y, listint_t *z);
 void cocktail_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
 /*help functions*/
+void update_list(listint_t **list);
+void print_list1(listint_t *list);
 void swap(int *a, int *b);
 #endif /*sort*/

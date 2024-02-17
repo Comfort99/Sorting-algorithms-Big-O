@@ -9,9 +9,9 @@ void swap_(listint_t *y, listint_t *z)
 {
 	listint_t *i = y;
 	listint_t *t = z;
-			printf("IN SWAP FUNCTION======\n");
-	                printf("This is i1: %d\n", i->n);
-                        printf("This is t: %d\n", t->n);
+//1			printf("IN SWAP FUNCTION======\n");
+///	                printf("This is i1: %d\n", i->n);
+///                        printf("This is t: %d\n", t->n);
 
 	if (i->n > t->n)
                 {
@@ -45,7 +45,7 @@ void swap_(listint_t *y, listint_t *z)
                                 if (i != NULL)
                                         //printf("This is i2 : %d\n", i->n);
 				t = i->next;
-				printf("NOW i: %d\n", i->n);
+///				printf("NOW i: %d\n", i->n);
 				y = i;
 				z = t;
 				if (t != NULL)
@@ -56,5 +56,5 @@ void swap_(listint_t *y, listint_t *z)
 				// else if (t == NULL)
 //					printf("t  //i->next is NULL\n");
 		}
-		printf("LEAVE\n");
+///1		printf("LEFT SWAP FUNCTION====\n");
 }

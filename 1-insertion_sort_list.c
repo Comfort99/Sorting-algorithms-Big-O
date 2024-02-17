@@ -5,6 +5,7 @@
   *
   *
   */
+void update_list(listint_t **list);
 void insertion_sort_list(listint_t **list)
 {
  	listint_t *t = *list;
@@ -58,16 +59,18 @@ void insertion_sort_list(listint_t **list)
 		
 		t = t->next;
 	}
-	j = *list;
-	while (j->prev != NULL)
-	{
-		printf("j: %d\n", j->n);
-		if (j->prev != NULL)
-			printf("j->prev: %d\n", j->prev->n);
-		printf("j->next: %d\n", j->next->n);
-		j = j->prev;
-	}
-	printf("END ======== ");
-	printf("j is finally : %d: \n", j->n);
-	*list = j;
+//	j = *list;
+//	while (j->prev != NULL)
+//	{
+//		printf("j: %d\n", j->n);
+//		if (j->prev != NULL)
+//			printf("j->prev: %d\n", j->prev->n);
+//		printf("j->next: %d\n", j->next->n);
+//		j = j->prev;
+//	}
+//	printf("END ======== ");
+//	printf("j is finally : %d: \n", j->n);
+//	*list = j;
+//		printf("TRIAL WITH J \n");
+	update_list(list);
 }
