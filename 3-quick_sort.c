@@ -6,7 +6,7 @@
   *
   *
   */
-void swap(int *p, int *p1);
+void swap(int *p, int *p1, int a[], int length);
 void quicksort_recursive(int a[], int first, int last, int length);
 int partition(int a[], int first, int last, int length);
 
@@ -17,11 +17,12 @@ void quick_sort(int *array, size_t size)
 	quicksort_recursive(array, 0, size - 1, length);
 }
 
-void swap(int *p, int *p1)
+void swap(int *p, int *p1, int a[], int length)
 {
 	int temp = *p;
 	*p = *p1;
 	*p1 = temp;
+	print_array1(a, 0, length  + 1);
 }
 
 void quicksort_recursive(int a[], int first, int last, int length)
@@ -46,8 +47,7 @@ int partition(int a[], int first, int last, int length)
 	{
 		if ( a[j] <= i_pv)
 		{
-			print_array1(a, 0, length  + 1);
-			swap(&a[i], &a[j]);
+			swap(&a[i], &a[j], a, length);
 			/*print_array1(a, 0, length  + 1);*/
 			i++;
 			while (k <= length)
@@ -59,6 +59,6 @@ int partition(int a[], int first, int last, int length)
 		/*printf("\n");*/
 	} /*for loop*/
 	
-	swap(&a[i], &a[last]);
+	swap(&a[i], &a[last], a, length);
 	return (i);
 }

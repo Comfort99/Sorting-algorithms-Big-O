@@ -40,7 +40,7 @@ void bitonic_sort(int *array, size_t size);
 void update_list(listint_t **list);
 void print_list1(listint_t *list);
 void merge_sort(int *array, size_t size);
-void swap(int *a, int *b);
+void swap(int *p, int *p1, int a[], int length);
 int get_max(int *array, int size);
 void max_heapify(int *array, size_t size, size_t base, size_t root);
 void print_array1(int *array, int lb, int size);
