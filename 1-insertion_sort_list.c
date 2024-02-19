@@ -1,14 +1,13 @@
 #include "sort.h"
 /**
-  *
-  *
-  *
-  *
+  * insertion_sort_list - This sorts lists with insertion method
+  * @list: This a double ptr to thr linked list
+  * Return: No Return.
   */
 void update_list(listint_t **list);
 void insertion_sort_list(listint_t **list)
 {
- 	listint_t *t = *list;
+	listint_t *t = *list;
 	listint_t *i;
 	listint_t *j;
 
@@ -28,16 +27,16 @@ void insertion_sort_list(listint_t **list)
 	{
 		i = t->prev;
 	/*
-		printf("============\n");
-		printf("THIS is i:%d\n", i->n);
-		printf("THIS is t:%d\n", t->n);
+		*printf("============\n");
+		*printf("THIS is i:%d\n", i->n);
+		*printf("THIS is t:%d\n", t->n);
 		*/
-		while(i != NULL && (i->n > t->n))
+		while (i != NULL && (i->n > t->n))
 		{
 			i = t->prev;
 			/*
-			printf("This is i1: %d\n", i->n);
-			printf("This is t: %d\n", t->n);
+		*	printf("This is i1: %d\n", i->n);
+		*	printf("This is t: %d\n", t->n);
 			*/
 			i->next = t->next;
 			if (t->next != NULL)
@@ -53,7 +52,7 @@ void insertion_sort_list(listint_t **list)
 			}
 			else
 				t->prev = NULL;
-			i->prev = t;			
+			i->prev = t;
 /*			printf("This is i->prev: %d\n", i->prev->n);*/
 			if (t->prev != NULL)
 			{
@@ -67,13 +66,13 @@ void insertion_sort_list(listint_t **list)
 /*					printf("This is i2 : %d\n", i->n);*/
 		 update_list(list);
 		 print_list1(*list);
-		}/*while loop*/
+		} /*while loop*/
 		t = t->next;
-	}/*for loop*/
+	} /*for loop*/
 
-  
-	/*j = *list;
-	while (j->prev != NULL)
+	/*
+	   *j = *list;
+	*while (j->prev != NULL)
 	{
 		printf("j: %d\n", j->n);
 		if (j->prev != NULL)
@@ -88,4 +87,4 @@ void insertion_sort_list(listint_t **list)
 	*/
 	update_list(list);
 
-}/*end of fn*/
+} /*end of fn*/
