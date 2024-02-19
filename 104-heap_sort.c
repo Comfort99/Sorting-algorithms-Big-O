@@ -13,34 +13,41 @@ void swap(int *a, int *b)
 }
 
 /**
- * max_heapify - Function to perform heapify (sift-down) operation
- * @arr: Parameter of an array
- * @n: Parameter to size of an array
- * @i: Parameter of an size of an array
+ * max_heapify - Turn a binary tree into a complete binary heap.
+ * @array: An array of integers representing a binary tree.
+ * @size: The size of the array/tree.
+ * @base: The index of the base row of the tree.
+ * @root: The root node of the binary tree.
  */
-void max_heapify(int arr[], size_t n, size_t i)
+void max_heapify(int *array, size_t size, size_t base, size_t root)
 {
-	size_t largest = i;
-	size_t left = 2 * i + 1;
-	size_t right = 2 * i + 2;
+	size_t left, right, large;
 
-	if (left < n && arr[left] > arr[largest])
-		largest = left;
-	if (right < n && arr[right] > arr[largest])
-		largest = right;
-	if (largest != i)
+	left = 2 * root + 1;
+	right = 2 * root + 2;
+	large = root;
+
+	if (left < base && array[left] > array[large])
+		large = left;
+	if (right < base && array[right] > array[large])
+		large = right;
+
+	if (large != root)
 	{
-		swap(&arr[i], &arr[largest]);
-		print_array(arr, n);
-		max_heapify(arr, n, largest);
+		swap(array + root, array + large);
+		print_array(array, size);
+		max_heapify(array, size, base, large);
 	}
 }
 
 /**
- * heap_sort - function that sorts an array of integers
- * in ascending order using Heap sort algorithm
- * @array: pointer to an array
- * @size: number of elements of an array
+ * heap_sort - Sort an array of integers in ascending
+ *             order using the heap sort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ *
+ * Description: Implements the sift-down heap sort
+ * algorithm. Prints the array after each swap.
  */
 void heap_sort(int *array, size_t size)
 {
@@ -49,15 +56,13 @@ void heap_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	/* Build max heap */
-	for (i = size / 2 - 1; i >= 0; i--)
-		max_heapify(array, size, i);
+	for (i = (size / 2) - 1; i >= 0; i--)
+		max_heapify(array, size, size, i);
 
-	/* Extract elements one by one */
 	for (i = size - 1; i > 0; i--)
 	{
-		swap(&array[0], &array[i]);
-		max_heapify(array, i, 0);
-		print_array(array, size); /* Print array after each swap */
+		swap(array, array + i);
+		print_array(array, size);
+		max_heapify(array, size, i, 0);
 	}
 }
