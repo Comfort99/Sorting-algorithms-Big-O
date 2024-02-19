@@ -46,16 +46,18 @@ int partition(int a[], int first, int last, int length)
 	{
 		if ( a[j] <= i_pv)
 		{
+			print_array1(a, 0, length  + 1);
 			swap(&a[i], &a[j]);
+			/*print_array1(a, 0, length  + 1);*/
 			i++;
-		  while (k <= length)
-		{
+			while (k <= length)
+			{
 			/*printf("%d, ", a[k]);*/
-			k++;
-		}
+				k++;
+			}
 		}	
 		/*printf("\n");*/
-		}
+	} /*for loop*/
 	
 	swap(&a[i], &a[last]);
 	return (i);
