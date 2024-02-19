@@ -10,7 +10,13 @@ void insertion_sort_list(listint_t **list)
 {
  	listint_t *t = *list;
 	listint_t *i;
-/*	listint_t *j;*/
+	listint_t *j;
+
+	j = *list;
+	if (!list || *list == NULL)
+		return;
+	if (j->next == NULL)
+		return;
 	t = t->next;
 	/* t is at 48*/
 	/**
