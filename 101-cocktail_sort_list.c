@@ -60,6 +60,10 @@ void cocktail_sort_list(listint_t **list)
 /*	printf("BACKWARD....  ");*/
 	flag = 0;
 	end = end->prev;
+<<<<<<< HEAD
+=======
+/*	printf("end is NOW  : %d\n", end->n);*/
+>>>>>>> 2ec44cba319dd6c09ff1a5a43ea662b3229b9fbf
 	
 	for (start = end->prev; start != NULL;) /*for loop Back*/
 	{
@@ -70,9 +74,13 @@ void cocktail_sort_list(listint_t **list)
 /*			printf("start is :%d\n", start->n);*/
 /*			printf("start->next is :%d\n", start->next->n);*/
 			swap_(start, start->next);
+<<<<<<< HEAD
 		 	update_list(list);
 			print_list1(*list);
 			/*	start = start->prev;*/
+=======
+		/*	start = start->prev;*/
+>>>>>>> 2ec44cba319dd6c09ff1a5a43ea662b3229b9fbf
 		/*	printf("start after swap is now :%d\n", start->n);*/
 /*		printf("start AFTER SWAP  is :%d\n", start->n);*/
 /*		printf("start->prev is :%d\n", start->prev->n);*/
@@ -91,10 +99,17 @@ void cocktail_sort_list(listint_t **list)
 			break;
 		start = start->prev;
 		
+<<<<<<< HEAD
 	} /* for loop*/
 /*	if (start == end)*/
 /*		printf("==================== BB LOOP ENDED ===========\n");*/
 	/*printf("B: ");*/
+=======
+	}/* for loop */
+/*	if (start == end) */
+/*		printf("==================== BB LOOP ENDED ===========\n");*/
+	printf("B: ");
+>>>>>>> 2ec44cba319dd6c09ff1a5a43ea662b3229b9fbf
 	update_list(list);
 	print_list1(*list);
 /*	printf("start is :%d\n", start->n);*/
@@ -107,3 +122,34 @@ void cocktail_sort_list(listint_t **list)
 
 }
 
+
+void swap_(listint_t *y, listint_t *z)
+{
+        listint_t *i = y;
+        listint_t *t = z;
+
+        if (i->n > t->n)
+                {
+                        i->next = t->next;
+                        if (t->next != NULL)
+                        {
+                                t->next->prev = t->prev;
+                        }
+                        if (i->prev != NULL)
+                        {
+                                t->prev = i->prev;
+                        }
+                        else
+                                t->prev = NULL;
+                        i->prev = t;
+                        if (t->prev != NULL)
+                        {
+                                t->prev->next = t;
+                        }
+                                t->next = i;
+                                if (i != NULL)
+                                t = i->next;
+                                y = i;
+                                z = t;
+                }
+}

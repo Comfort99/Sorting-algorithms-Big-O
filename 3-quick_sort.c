@@ -1,64 +1,91 @@
 #include "sort.h"
+
 /**
-  *
-  *
-  *
-  *
-  *
-  */
-void swap(int *p, int *p1);
-void quicksort_recursive(int a[], int first, int last, int length);
-int partition(int a[], int first, int last, int length);
-
-void quick_sort(int *array, size_t size)
+ * myswap - swaps two values
+ *
+ * @array: data sort input
+ * @firts: first
+ * @second: second
+ * @size: size
+ *
+ * Return: No Return
+ */
+void myswap(int *array, int firts, int second, int size);
+void myquicksort(int *array, int left, int right, size_t size);
+int part(int *array, int left, int right, size_t size);
+void myswap(int *array, int firts, int second, int size)
 {
-	int length = size - 1;
+	int tmp;
 
-	quicksort_recursive(array, 0, size - 1, length);
-}
-
-void swap(int *p, int *p1)
-{
-	int temp = *p;
-	*p = *p1;
-	*p1 = temp;
-}
-
-void quicksort_recursive(int a[], int first, int last, int length)
-{
-
-	if (first < last)
+	if (array[firts] != array[second])
 	{
-	int i_p = partition(a, first, last, length); /*This is the pivot index*/
-	quicksort_recursive(a, first, i_p - 1, length);
-	quicksort_recursive(a, i_p + 1, last, length);
+		tmp = array[firts];
+		array[firts] = array[second];
+		array[second] = tmp;
+		print_array(array, size);
 	}
 }
 
-int partition(int a[], int first, int last, int length)
+/**
+ * part - part to a pivot
+ *
+ * @array: data sort input
+ * @left: left
+ * @right: right
+ * @size: size input
+ *
+ * Return: New pivote
+ */
+int part(int *array, int left, int right, size_t size)
 {
-	int i_pv = a[last];
-	int i = first;/*i_pv is the value at the pivot index*/
-	int j;
-	int k = 0;
+	int i = left, j, pivot  = array[right];
 
-	for (j = first; j < last; j++)
+	for (j = left; j <= right; j++)
 	{
-		if ( a[j] <= i_pv)
+		if (array[j] < pivot)
 		{
-			print_array1(a, 0, length  + 1);
-			swap(&a[i], &a[j]);
-			/*print_array1(a, 0, length  + 1);*/
+			myswap(array, i, j, size);
 			i++;
-			while (k <= length)
-			{
-			/*printf("%d, ", a[k]);*/
-				k++;
-			}
-		}	
-		/*printf("\n");*/
-	} /*for loop*/
-	
-	swap(&a[i], &a[last]);
+		}
+	}
+	myswap(array, i, right, size);
+
 	return (i);
+}
+
+/**
+ * myquicksort -  quick sort algorithm
+ *
+ * @array: data to sort
+ * @left: left pivote
+ * @right: right pivote
+ * @size: size input
+ * Return: No Return
+ */
+void myquicksort(int *array, int left, int right, size_t size)
+{
+	int pivote;
+
+	if (left < right)
+	{
+		pivote = part(array, left, right, size);
+		myquicksort(array, left, pivote - 1, size);
+		myquicksort(array, pivote + 1, right, size);
+	}
+}
+
+/**
+ * quick_sort -  quick sort algorithm
+ *
+ * @array: sort data
+ * @size: size input
+ *
+ * Return: No Return
+ */
+void quick_sort(int *array, size_t size)
+{
+	if (size < 2)
+		return;
+
+	myquicksort(array, 0, size - 1, size);
 }
