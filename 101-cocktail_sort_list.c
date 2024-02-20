@@ -34,7 +34,9 @@ void cocktail_sort_list(listint_t **list)
 				flag = 1;
 	/*			printf("TO BE SWAPPED %d:\n", start->n);*/
 				swap_(start, start->next); /* to swap what start points to	*/
-/*/				printf("start2 : %d\n", start->n);*/
+				update_list(list);
+  				print_list1(*list);
+ /* 				printf("start2 : %d\n", start->n);*/
 	/*			if (start->next != NULL)*/
 	/*			printf("start->next: %d\n", start->next->n);*/
 			}
@@ -50,27 +52,28 @@ void cocktail_sort_list(listint_t **list)
 		if (flag == 0)
 			break;
 	/* STILL INSIDE WHILE LOOP*/
-	printf("F: ");
-	update_list(list);
-	print_list1(*list);
+/*	printf("F: ");*/
+/*	update_list(list);**/
+/*	print_list1(*list);**/
 	/* BACKLWARDS NOW*/
-////	printf("=================================");
-////	printf("BACKWARD....  ");
+/*	printf("=================================");*/
+/*	printf("BACKWARD....  ");*/
 	flag = 0;
 	end = end->prev;
-////	printf("end is NOW  : %d\n", end->n);
 	
-	for (start = end->prev; start != NULL;)//for loop Back
+	for (start = end->prev; start != NULL;) /*for loop Back*/
 	{
-////		printf("start  at BEG. is :%d\n", start->n);
+/*		printf("start  at BEG. is :%d\n", start->n);*/
 		if (start->n > start->next->n)
 		{
 			flag = 1;
-////			printf("start is :%d\n", start->n);*/
-////			printf("start->next is :%d\n", start->next->n);*/
+/*			printf("start is :%d\n", start->n);*/
+/*			printf("start->next is :%d\n", start->next->n);*/
 			swap_(start, start->next);
-		//	start = start->prev;*/
-		///	printf("start after swap is now :%d\n", start->n);*/
+		 	update_list(list);
+			print_list1(*list);
+			/*	start = start->prev;*/
+		/*	printf("start after swap is now :%d\n", start->n);*/
 /*		printf("start AFTER SWAP  is :%d\n", start->n);*/
 /*		printf("start->prev is :%d\n", start->prev->n);*/
 /*		printf("start->next :%d\n", start->next->n);*/
@@ -83,24 +86,24 @@ void cocktail_sort_list(listint_t **list)
 		}
 
 		else  
-////			printf("start not greater\n");
+/*			printf("start not greater\n");*/
 		if (start->prev == NULL)
 			break;
 		start = start->prev;
 		
-	}// for loop
-//	if (start == end)
-//1		printf("==================== BB LOOP ENDED ===========\n");
-	printf("B: ");
+	} /* for loop*/
+/*	if (start == end)*/
+/*		printf("==================== BB LOOP ENDED ===========\n");*/
+	/*printf("B: ");*/
 	update_list(list);
 	print_list1(*list);
-//	printf("start is :%d\n", start->n);
-////	printf("start at end of BB is :%d\n", start->n);
+/*	printf("start is :%d\n", start->n);*/
+/*	printf("start at end of BB is :%d\n", start->n);*/
 	start = start->next;
 	while (end->next->next != NULL)
 		end = end->next;
-////	printf("end at end of BB is :%d\n", end->n);
-	}//end of while loop
+/*	printf("end at end of BB is :%d\n", end->n);*/
+	} /*end of while loop*/
 
 }
 
