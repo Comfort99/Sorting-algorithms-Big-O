@@ -1,78 +1,115 @@
 #include "sort.h"
+
 /**
-  *
-  *
-  *
-  *
-  *
-  *
-  */
-void swap_(listint_t *y, listint_t *z);
+ * cocktail_sort_list - sorts a list of integers using the Cocktail Sort
+ * Algorithm
+ *
+ * @list: a pointer to a doubly linked list of integers
+ */
 void cocktail_sort_list(listint_t **list)
 {
-	int flag = 1;
-	listint_t *start;
-	listint_t *end;
+	listint_t *current;
+	int swapped = 0;
 
-	if (list == NULL || *list == NULL)
+	if (list == NULL || (*list) == NULL || (*list)->next == NULL)
 		return;
-	start = end =  *list;
-	while(end->next != NULL) /* i.e last node is end->next != NULL*/
+
+	do {
+		current = *list;
+
+		/* First pass: left to right */
+		swapped = left_bubble_sort(list, &current);
+		if (swapped == 0)
+			break;
+
+		/* Second pass: right to left */
+		swapped = right_bubble_sort(list, &current);
+		if (swapped == 0)
+			break;
+
+	} while (swapped == 1);
+}
+
+/**
+ * left_bubble_sort - performs bubbles sort from left to right
+ *
+ * @list: a pointer to a doubly linked list of integers
+ * @current: the current position in the linked list (start of the linked list)
+ *
+ * Return: true when a swap occur, false otherwise
+ */
+int left_bubble_sort(listint_t **list, listint_t **current)
+{
+	listint_t *next;
+	int swapped = 0;
+
+	while ((*current)->next != NULL)
 	{
-		end = end->next;
-	}
-	while (flag == 1)
-	{
-		flag = 0;
-		for (; start->next != NULL && start != end;)
+		next = (*current)->next;
+		if ((*current)->n > next->n)
 		{
-			if (start->n > start->next->n)
-			{
-				flag = 1;
-				swap_(start, start->next); /* to swap what start points to	*/
-				update_list(list);
-  				print_list((const listint_t *)*list);
-			}
+			/* swap nodes */
+			if ((*current)->prev != NULL)
+				(*current)->prev->next = next;
 			else
-				start = start->next;
-		}
-		if (end->next != NULL)
-			end = end->next;
-		if (flag == 0)
-			break;
-	flag = 0;
-	end = end->prev;
-	
-	for (start = end->prev; start != NULL;) /*for loop Back*/
-	{
-/*		printf("start  at BEG. is :%d\n", start->n);*/
-		if (start->n > start->next->n)
-		{
-			flag = 1;
-/*			printf("start is :%d\n", start->n);*/
-/*			printf("start->next is :%d\n", start->next->n);*/
-			swap_(start, start->next);
-		 	update_list(list);
+				*list = next; /* insert at the beginning of the list */
+
+			if (next->next != NULL)
+				next->next->prev = *current;
+
+			(*current)->next = next->next;
+			next->prev = (*current)->prev;
+			(*current)->prev = next;
+			next->next = (*current);
+
+			swapped = 1;
 			print_list((const listint_t *)*list);
-			/*	start = start->prev;*/
 		}
-
-		else  
-/*			printf("start not greater\n");*/
-		if (start->prev == NULL)
-			break;
-		start = start->prev;
-		
-	} /* for loop*/
-	/* for loop */
-/*	printf("B: ");*/
-/*	update_list(list);*/
-/*	print_list((const listint_t *)*list);*/
-	start = start->next;
-
-	while (end->next->next != NULL)
-		end = end->next;
+		else
+			*current = (*current)->next;
 	}
-} /*end of while loop*/
 
+	return (swapped);
+}
 
+/**
+ * right_bubble_sort - performs bubbles sort from right to left
+ *
+ * @list: a pointer to a doubly linked list of integers
+ * @current: the current position in the linked list (end of the linked list)
+ *
+ * Return: true when a swap occur, false otherwise
+ */
+int right_bubble_sort(listint_t **list, listint_t **current)
+{
+	listint_t *next;
+	int swapped = 0;
+
+	while ((*current)->prev != NULL)
+	{
+		next = (*current)->prev;
+		if ((*current)->n < next->n)
+		{
+			/* swap nodes */
+			if (next->prev != NULL)
+				next->prev->next = *current;
+			else
+				*list = *current; /* insert at the beginning of the list */
+
+			if ((*current)->next != NULL)
+				(*current)->next->prev = next;
+
+			next->next = (*current)->next;
+			(*current)->prev = next->prev;
+			next->prev = *current;
+			(*current)->next = next;
+
+			swapped = 1;
+			print_list((const listint_t *)*list);
+		}
+		else
+			*current = (*current)->prev;
+	}
+
+	return (swapped);
+}
