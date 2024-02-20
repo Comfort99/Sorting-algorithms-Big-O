@@ -54,23 +54,23 @@ void cocktail_sort_list(listint_t **list)
 	update_list(list);
 	print_list1(*list);
 	/* BACKLWARDS NOW*/
-////	printf("=================================");
-////	printf("BACKWARD....  ");
+/*	printf("=================================");*/
+/*	printf("BACKWARD....  ");*/
 	flag = 0;
 	end = end->prev;
-////	printf("end is NOW  : %d\n", end->n);
+/*	printf("end is NOW  : %d\n", end->n);*/
 	
-	for (start = end->prev; start != NULL;)//for loop Back
+	for (start = end->prev; start != NULL;) /*for loop Back*/
 	{
-////		printf("start  at BEG. is :%d\n", start->n);
+/*		printf("start  at BEG. is :%d\n", start->n);*/
 		if (start->n > start->next->n)
 		{
 			flag = 1;
-////			printf("start is :%d\n", start->n);*/
-////			printf("start->next is :%d\n", start->next->n);*/
+/*			printf("start is :%d\n", start->n);*/
+/*			printf("start->next is :%d\n", start->next->n);*/
 			swap_(start, start->next);
-		//	start = start->prev;*/
-		///	printf("start after swap is now :%d\n", start->n);*/
+		/*	start = start->prev;*/
+		/*	printf("start after swap is now :%d\n", start->n);*/
 /*		printf("start AFTER SWAP  is :%d\n", start->n);*/
 /*		printf("start->prev is :%d\n", start->prev->n);*/
 /*		printf("start->next :%d\n", start->next->n);*/
@@ -83,24 +83,55 @@ void cocktail_sort_list(listint_t **list)
 		}
 
 		else  
-////			printf("start not greater\n");
+/*			printf("start not greater\n");*/
 		if (start->prev == NULL)
 			break;
 		start = start->prev;
 		
-	}// for loop
-//	if (start == end)
-//1		printf("==================== BB LOOP ENDED ===========\n");
+	}/* for loop */
+/*	if (start == end) */
+/*		printf("==================== BB LOOP ENDED ===========\n");*/
 	printf("B: ");
 	update_list(list);
 	print_list1(*list);
-//	printf("start is :%d\n", start->n);
-////	printf("start at end of BB is :%d\n", start->n);
+/*	printf("start is :%d\n", start->n);*/
+/*	printf("start at end of BB is :%d\n", start->n);*/
 	start = start->next;
 	while (end->next->next != NULL)
 		end = end->next;
-////	printf("end at end of BB is :%d\n", end->n);
-	}//end of while loop
+/*	printf("end at end of BB is :%d\n", end->n);*/
+	} /*end of while loop*/
 
 }
 
+
+void swap_(listint_t *y, listint_t *z)
+{
+        listint_t *i = y;
+        listint_t *t = z;
+
+        if (i->n > t->n)
+                {
+                        i->next = t->next;
+                        if (t->next != NULL)
+                        {
+                                t->next->prev = t->prev;
+                        }
+                        if (i->prev != NULL)
+                        {
+                                t->prev = i->prev;
+                        }
+                        else
+                                t->prev = NULL;
+                        i->prev = t;
+                        if (t->prev != NULL)
+                        {
+                                t->prev->next = t;
+                        }
+                                t->next = i;
+                                if (i != NULL)
+                                t = i->next;
+                                y = i;
+                                z = t;
+                }
+}
