@@ -8,12 +8,8 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *curr, *swap, *tmp;
 
-	if (!list || *list == NULL)
-		return;
 	curr = *list;
 	/* validate if there is only one element in list */
-	if (curr->next == NULL)
-		return;
 	while (curr->next != NULL)
 	{
 		swap = curr->next;
