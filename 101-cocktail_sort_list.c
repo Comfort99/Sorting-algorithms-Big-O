@@ -9,7 +9,7 @@
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *current;
-	bool swapped;
+	int swapped = 0;
 
 	if (list == NULL || (*list) == NULL || (*list)->next == NULL)
 		return;
@@ -19,15 +19,15 @@ void cocktail_sort_list(listint_t **list)
 
 		/* First pass: left to right */
 		swapped = left_bubble_sort(list, &current);
-		if (!swapped)
+		if (swapped == 0)
 			break;
 
 		/* Second pass: right to left */
 		swapped = right_bubble_sort(list, &current);
-		if (!swapped)
+		if (swapped == 0)
 			break;
 
-	} while (swapped);
+	} while (swapped == 1);
 }
 
 /**
@@ -38,10 +38,10 @@ void cocktail_sort_list(listint_t **list)
  *
  * Return: true when a swap occur, false otherwise
  */
-bool left_bubble_sort(listint_t **list, listint_t **current)
+int left_bubble_sort(listint_t **list, listint_t **current)
 {
 	listint_t *next;
-	bool swapped = false;
+	int swapped = 0;
 
 	while ((*current)->next != NULL)
 	{
@@ -62,7 +62,7 @@ bool left_bubble_sort(listint_t **list, listint_t **current)
 			(*current)->prev = next;
 			next->next = (*current);
 
-			swapped = true;
+			swapped = 1;
 			print_list((const listint_t *)*list);
 		}
 		else
@@ -80,10 +80,10 @@ bool left_bubble_sort(listint_t **list, listint_t **current)
  *
  * Return: true when a swap occur, false otherwise
  */
-bool right_bubble_sort(listint_t **list, listint_t **current)
+int right_bubble_sort(listint_t **list, listint_t **current)
 {
 	listint_t *next;
-	bool swapped = false;
+	int swapped = 0;
 
 	while ((*current)->prev != NULL)
 	{
@@ -104,7 +104,7 @@ bool right_bubble_sort(listint_t **list, listint_t **current)
 			next->prev = *current;
 			(*current)->next = next;
 
-			swapped = true;
+			swapped = 1;
 			print_list((const listint_t *)*list);
 		}
 		else
