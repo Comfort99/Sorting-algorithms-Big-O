@@ -36,7 +36,10 @@ void counting_sort(int *array, size_t array_size);
 void heap_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
+void radix_sort(int *array, size_t size);
 /*help functions*/
+void radix_counting_sort(int *array, size_t size, int sig, int *buff);
+int get_max(int *array, int size);
 void update_list(listint_t **list);
 void print_list1(listint_t *list);
 void merge_sort(int *array, size_t size);
