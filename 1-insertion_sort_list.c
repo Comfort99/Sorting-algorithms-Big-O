@@ -10,6 +10,10 @@ void insertion_sort_list(listint_t **list)
 
 	curr = *list;
 	/* validate if there is only one element in list */
+	if (!list || *list == NULL)
+		return;
+	if (curr->next == NULL)
+		return;
 	while (curr->next != NULL)
 	{
 		swap = curr->next;
