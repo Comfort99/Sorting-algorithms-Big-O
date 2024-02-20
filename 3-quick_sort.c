@@ -18,7 +18,6 @@ void quick_sort(int *array, size_t size)
 		return;
 
 	quicksort_recursive(array, 0, size - 1, length);
-	printf("AT END\n");
 	print_array1(array, 0, length  + 1);
 }
 
