@@ -48,5 +48,6 @@ void bitonic_merge(int *array, size_t size, size_t start,
 		size_t seq, char flow);
 void bitonic_seq(int *array, size_t size, size_t start,
 		size_t seq, char flow);
-
+bool left_bubble_sort(listint_t **list, listint_t **current);
+bool right_bubble_sort(listint_t **list, listint_t **current);
 #endif /*sort*/
